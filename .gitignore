@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+._*
+.env
+*.key
+*.log
+.cache/
+.venv/
+dataset/
+libero-resources/
+outputs/
+models/RLinf-Pi05-LIBERO-SFT/
+models/RLinf-Pi05-MetaWorld-SFT/

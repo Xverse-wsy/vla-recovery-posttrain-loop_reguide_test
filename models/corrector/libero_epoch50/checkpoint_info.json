@@ -1,0 +1,11 @@
+{
+  "epoch": 50,
+  "filename": "best_cosine_model_epoch_50.pt",
+  "sha256": "a131d9700b693a8780b4790e8fb6a10ac3e5a72055c8aa684ce1c052ce02b30b",
+  "bytes": 170055222,
+  "training_run": "rlinf_pi05_libero_nopin_20261007_122333",
+  "h_window": 1,
+  "k_step": 10,
+  "action_dim": 7,
+  "validation_cosine_loss": 0.3031339021648817
+}

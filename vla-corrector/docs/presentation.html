@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VLA-Corrector Presentation</title>
+    <style>
+      :root {
+        --bg: #eef2f7;
+        --panel: rgba(255, 255, 255, 0.94);
+        --text: #17202a;
+        --muted: #64748b;
+        --blue: #2f5f9f;
+        --line: rgba(15, 23, 42, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 18% 12%, rgba(47, 95, 159, 0.12), transparent 30%),
+          linear-gradient(180deg, #f7f9fc 0%, var(--bg) 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        overflow: hidden;
+      }
+
+      .deck {
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        gap: 10px;
+        width: 100vw;
+        height: 100vh;
+        padding: 12px;
+      }
+
+      .slide-shell {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-width: 0;
+        min-height: 0;
+      }
+
+      .slide {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow:
+          0 22px 64px rgba(15, 23, 42, 0.2),
+          0 0 0 1px rgba(15, 23, 42, 0.08);
+        user-select: none;
+      }
+
+      .nav {
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.64);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text);
+        font-size: 26px;
+        font-weight: 800;
+        line-height: 1;
+        transform: translateY(-50%);
+        cursor: pointer;
+        box-shadow: 0 10px 26px rgba(15, 23, 42, 0.16);
+      }
+
+      .nav:hover {
+        background: #fff;
+        color: var(--blue);
+      }
+
+      .nav.prev {
+        left: 14px;
+      }
+
+      .nav.next {
+        right: 14px;
+      }
+
+      .deck-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        min-height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 7px 9px 7px 14px;
+        background: var(--panel);
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.1);
+      }
+
+      .counter {
+        min-width: 48px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .dots {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        gap: 7px;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border: 0;
+        border-radius: 999px;
+        background: #b8c3d4;
+        cursor: pointer;
+        transition:
+          width 160ms ease,
+          background 160ms ease;
+      }
+
+      .dot.active {
+        width: 24px;
+        background: var(--blue);
+      }
+
+      .actions {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 30px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 5px 11px;
+        background: #fff;
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 850;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .action:hover {
+        border-color: rgba(47, 95, 159, 0.44);
+        background: #edf3fb;
+        text-decoration: none;
+      }
+
+      @media (max-width: 720px) {
+        .deck {
+          padding: 8px;
+        }
+
+        .nav {
+          width: 36px;
+          height: 36px;
+          font-size: 21px;
+        }
+
+        .nav.prev {
+          left: 8px;
+        }
+
+        .nav.next {
+          right: 8px;
+        }
+
+        .deck-footer {
+          align-items: stretch;
+          flex-direction: column;
+          border-radius: 18px;
+        }
+
+        .dots {
+          order: -1;
+        }
+
+        .actions {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck" aria-label="VLA-Corrector slide presentation">
+      <section class="slide-shell">
+        <button class="nav prev" type="button" aria-label="Previous slide" data-prev>&lsaquo;</button>
+        <img class="slide" id="slide" src="assets/presentation/slides/slide_01.png?v=slides-v2" alt="Presentation slide 1" />
+        <button class="nav next" type="button" aria-label="Next slide" data-next>&rsaquo;</button>
+      </section>
+
+      <footer class="deck-footer">
+        <span class="counter" id="counter">1 / 8</span>
+        <div class="dots" id="dots" aria-label="Slide navigation"></div>
+        <div class="actions" aria-label="Presentation files">
+          <a class="action" href="assets/presentation/vla_corrector_presentation.pdf?v=slides-v2">PDF</a>
+          <a class="action" href="assets/presentation/vla_corrector_presentation.pptx?v=slides-v2">PPTX</a>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      const slides = [
+        "assets/presentation/slides/slide_01.png?v=slides-v2",
+        "assets/presentation/slides/slide_02.png?v=slides-v2",
+        "assets/presentation/slides/slide_03.png?v=slides-v2",
+        "assets/presentation/slides/slide_04.png?v=slides-v2",
+        "assets/presentation/slides/slide_05.png?v=slides-v2",
+        "assets/presentation/slides/slide_06.png?v=slides-v2",
+        "assets/presentation/slides/slide_07.png?v=slides-v2",
+        "assets/presentation/slides/slide_08.png?v=slides-v2",
+      ];
+
+      const slide = document.querySelector("#slide");
+      const counter = document.querySelector("#counter");
+      const dots = document.querySelector("#dots");
+      let index = 0;
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.className = "dot";
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+        dot.addEventListener("click", () => show(i));
+        dots.appendChild(dot);
+      });
+
+      function preload(nextIndex) {
+        const image = new Image();
+        image.src = slides[(nextIndex + slides.length) % slides.length];
+      }
+
+      function show(next) {
+        index = (next + slides.length) % slides.length;
+        slide.src = slides[index];
+        slide.alt = `Presentation slide ${index + 1}`;
+        counter.textContent = `${index + 1} / ${slides.length}`;
+        dots.querySelectorAll(".dot").forEach((dot, i) => {
+          dot.classList.toggle("active", i === index);
+        });
+        preload(index + 1);
+      }
+
+      document.querySelector("[data-prev]").addEventListener("click", () => show(index - 1));
+      document.querySelector("[data-next]").addEventListener("click", () => show(index + 1));
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") show(index - 1);
+        if (event.key === "ArrowRight") show(index + 1);
+      });
+
+      show(0);
+    </script>
+  </body>
+</html>

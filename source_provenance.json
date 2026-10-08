@@ -1,0 +1,8 @@
+{
+  "vla_corrector_upstream": "https://github.com/ZJU-OmniAI/vla-corrector",
+  "vla_corrector_base_revision": "e02ab51f030d1e25c1ca1b5642667730d2e495d3",
+  "adapted_source_snapshot": true,
+  "rlinf_revision": "c70606f08cdca259b8dec03d4430926b5b8fac9d",
+  "openpi_revision": "215abfb217dbac7d5f1273282331b9b1866c0479",
+  "checkpoint_sha256": "a131d9700b693a8780b4790e8fb6a10ac3e5a72055c8aa684ce1c052ce02b30b"
+}

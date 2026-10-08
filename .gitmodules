@@ -1,0 +1,8 @@
+[submodule "RLinf"]
+    path = RLinf
+    url = https://github.com/RLinf/RLinf.git
+    shallow = true
+[submodule "openpi"]
+    path = openpi
+    url = https://github.com/Physical-Intelligence/openpi.git
+    shallow = true

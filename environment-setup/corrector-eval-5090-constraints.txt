@@ -1,0 +1,10 @@
+torch==2.7.1+cu128
+torchvision==0.22.1
+numpy==1.26.4
+scipy==1.15.3
+transformers==4.53.2
+jax==0.5.3
+jaxlib==0.5.3
+ml-dtypes==0.5.1
+numpydantic==1.6.11
+opencv-python==4.11.0.86
