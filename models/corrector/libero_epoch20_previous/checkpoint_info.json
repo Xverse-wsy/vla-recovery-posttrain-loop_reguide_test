@@ -1,0 +1,9 @@
+{
+  "name": "best_cosine_model_epoch_20.pt",
+  "source_path": "/home/wenchaoxu/wsy/vla-recovery-posttrain-loop/vla-corrector/outputs/rlinf_pi05_libero/h1_k10/best_cosine_model_epoch_20.pt",
+  "training_run": "rlinf_pi05_libero",
+  "epoch": 20,
+  "validation_cosine_loss": 0.336331282103799,
+  "sha256": "063f598e70dc0c95b6166e93d3765a125621883bf0dca94ca1a6be9944da1073",
+  "size": 170054626
+}

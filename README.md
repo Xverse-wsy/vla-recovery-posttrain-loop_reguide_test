@@ -17,7 +17,8 @@ The corrector is an h=1, k=10 MLP with 7 normalized action dimensions. Its
 epoch-50 validation cosine loss was 0.3031339021648817. See checkpoint_info.json
 for SHA256 and size. This is the corrector weight; the 7 GiB base policy and
 LIBERO simulation resources are external prerequisites. No training datasets,
-feature caches, optimizer archives, or other corrector epochs are included.
+feature caches or optimizer archives are included. The previous 20-epoch run is also
+available as described below.
 
 ## Download
 
@@ -62,3 +63,17 @@ python -u vla-corrector/scripts/eval_rlinf_libero.py \
 This runs 1,500 episodes across spatial, object, and goal. Keep suite step limits
 (240/240/320) and threshold defaults unchanged when comparing with the previous
 protocol. Rerun a matching baseline on new GPU/software if making comparisons.
+
+## Previous training run — epoch 20
+
+`models/corrector/libero_epoch20_previous/` contains the epoch-20 corrector from
+the original `rlinf_pi05_libero/h1_k10` run, which trained for 20 epochs. This is
+not the epoch-20 checkpoint from the later 50-epoch retraining run. Its validation
+cosine loss is 0.336331282103799. Keep config.json and cache_metadata.json with
+the weight. checkpoint_info.json records its source, size and SHA256.
+
+The four-suite evaluation uses spatial, object, goal and long (`libero_10` in
+RLinf), 50 trials per task, three flow steps, execution chunk 10, seed 42 and
+default OGG thresholds. On the prepared 5090 it is queued after BOTH stages of
+the current epoch-50 long evaluation finish. The same completed baseline runs
+provide the comparison. No new baseline or training run is required.

@@ -1,1 +1,2 @@
 models/corrector/libero_epoch50/*.pt filter=lfs diff=lfs merge=lfs -text
+models/corrector/libero_epoch20_previous/*.pt filter=lfs diff=lfs merge=lfs -text
